@@ -1,0 +1,6 @@
+framework module Pods_BadgerClient {
+  umbrella header "Pods-BadgerClient-umbrella.h"
+
+  export *
+  module * { export * }
+}

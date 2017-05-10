@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftPhoenixClient
 
 class ViewController: UIViewController {
 

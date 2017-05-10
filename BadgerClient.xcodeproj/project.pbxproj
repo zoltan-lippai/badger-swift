@@ -14,6 +14,9 @@
 		54D181441EBAF25100330767 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54D181421EBAF25100330767 /* LaunchScreen.storyboard */; };
 		54D1814F1EBAF25100330767 /* BadgerClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D1814E1EBAF25100330767 /* BadgerClientTests.swift */; };
 		54D1815A1EBAF25100330767 /* BadgerClientUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D181591EBAF25100330767 /* BadgerClientUITests.swift */; };
+		54D1816A1EBAF39200330767 /* SocketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D181681EBAF39200330767 /* SocketViewController.swift */; };
+		54D1816B1EBAF39200330767 /* SocketViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54D181691EBAF39200330767 /* SocketViewController.xib */; };
+		F3D1E54F1A78B7BF1A51CE34 /* Pods_BadgerClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B396665D31C0EF8C4BCF5504 /* Pods_BadgerClient.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		115B5260AED6C1B4DF25A5AA /* Pods-BadgerClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BadgerClient.release.xcconfig"; path = "Pods/Target Support Files/Pods-BadgerClient/Pods-BadgerClient.release.xcconfig"; sourceTree = "<group>"; };
 		54D181361EBAF25100330767 /* BadgerClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BadgerClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54D181391EBAF25100330767 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		54D1813B1EBAF25100330767 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +51,10 @@
 		54D181551EBAF25100330767 /* BadgerClientUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BadgerClientUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		54D181591EBAF25100330767 /* BadgerClientUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgerClientUITests.swift; sourceTree = "<group>"; };
 		54D1815B1EBAF25100330767 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		54D181681EBAF39200330767 /* SocketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketViewController.swift; path = SocketViewController/SocketViewController.swift; sourceTree = "<group>"; };
+		54D181691EBAF39200330767 /* SocketViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocketViewController.xib; path = SocketViewController/SocketViewController.xib; sourceTree = "<group>"; };
+		B396665D31C0EF8C4BCF5504 /* Pods_BadgerClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BadgerClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C36CEE0E7E5A46F40B47204A /* Pods-BadgerClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BadgerClient.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BadgerClient/Pods-BadgerClient.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3D1E54F1A78B7BF1A51CE34 /* Pods_BadgerClient.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +90,8 @@
 				54D1814D1EBAF25100330767 /* BadgerClientTests */,
 				54D181581EBAF25100330767 /* BadgerClientUITests */,
 				54D181371EBAF25100330767 /* Products */,
+				C55DAB9A1E88D7D118A40104 /* Pods */,
+				CAF07BEA784EDDEAC93F6A4B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,6 +108,7 @@
 		54D181381EBAF25100330767 /* BadgerClient */ = {
 			isa = PBXGroup;
 			children = (
+				54D181671EBAF37A00330767 /* SocketViewController */,
 				54D181391EBAF25100330767 /* AppDelegate.swift */,
 				54D1813B1EBAF25100330767 /* ViewController.swift */,
 				54D1813D1EBAF25100330767 /* Main.storyboard */,
@@ -125,6 +137,32 @@
 			path = BadgerClientUITests;
 			sourceTree = "<group>";
 		};
+		54D181671EBAF37A00330767 /* SocketViewController */ = {
+			isa = PBXGroup;
+			children = (
+				54D181681EBAF39200330767 /* SocketViewController.swift */,
+				54D181691EBAF39200330767 /* SocketViewController.xib */,
+			);
+			name = SocketViewController;
+			sourceTree = "<group>";
+		};
+		C55DAB9A1E88D7D118A40104 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C36CEE0E7E5A46F40B47204A /* Pods-BadgerClient.debug.xcconfig */,
+				115B5260AED6C1B4DF25A5AA /* Pods-BadgerClient.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		CAF07BEA784EDDEAC93F6A4B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B396665D31C0EF8C4BCF5504 /* Pods_BadgerClient.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +170,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 54D1815E1EBAF25100330767 /* Build configuration list for PBXNativeTarget "BadgerClient" */;
 			buildPhases = (
+				A77D480E6A58AA6FCC06121C /* [CP] Check Pods Manifest.lock */,
 				54D181321EBAF25100330767 /* Sources */,
 				54D181331EBAF25100330767 /* Frameworks */,
 				54D181341EBAF25100330767 /* Resources */,
+				6FBF42D6F709599166FEA8B2 /* [CP] Embed Pods Frameworks */,
+				FA6DA97E4C72BBF620EB263D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -233,6 +274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				54D181441EBAF25100330767 /* LaunchScreen.storyboard in Resources */,
+				54D1816B1EBAF39200330767 /* SocketViewController.xib in Resources */,
 				54D181411EBAF25100330767 /* Assets.xcassets in Resources */,
 				54D1813F1EBAF25100330767 /* Main.storyboard in Resources */,
 			);
@@ -254,12 +296,61 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		6FBF42D6F709599166FEA8B2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BadgerClient/Pods-BadgerClient-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A77D480E6A58AA6FCC06121C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FA6DA97E4C72BBF620EB263D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BadgerClient/Pods-BadgerClient-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		54D181321EBAF25100330767 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				54D1813C1EBAF25100330767 /* ViewController.swift in Sources */,
+				54D1816A1EBAF39200330767 /* SocketViewController.swift in Sources */,
 				54D1813A1EBAF25100330767 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -412,6 +503,7 @@
 		};
 		54D1815F1EBAF25100330767 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C36CEE0E7E5A46F40B47204A /* Pods-BadgerClient.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = BadgerClient/Info.plist;
@@ -424,6 +516,7 @@
 		};
 		54D181601EBAF25100330767 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 115B5260AED6C1B4DF25A5AA /* Pods-BadgerClient.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = BadgerClient/Info.plist;
@@ -507,6 +600,7 @@
 				54D181601EBAF25100330767 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		54D181611EBAF25100330767 /* Build configuration list for PBXNativeTarget "BadgerClientTests" */ = {
 			isa = XCConfigurationList;
@@ -515,6 +609,7 @@
 				54D181631EBAF25100330767 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		54D181641EBAF25100330767 /* Build configuration list for PBXNativeTarget "BadgerClientUITests" */ = {
 			isa = XCConfigurationList;
@@ -523,6 +618,7 @@
 				54D181661EBAF25100330767 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
