@@ -10,42 +10,17 @@ import UIKit
 import SwiftPhoenixClient
 
 class SocketViewController: UIViewController {
-
-    @IBOutlet weak var topicLabel: UILabel!
-    @IBOutlet weak var bodyLabel: UILabel!
     
-    @IBOutlet weak var messageButton: UIButton!
+    @IBOutlet weak var sendButton: UIButton?
     
     let socket = Socket(domainAndPort: "localhost:4000", path: "socket", transport: "websocket")
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        
         self.setupSocket()
-        
-        self.messageButton.addTarget(self, action: #selector(sendMessage(with:)), for: UIControlEvents.touchUpInside)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-    func sendMessage(with sender: UIButton) {
+    @IBAction func sendMessage(_ sender: UIButton) {
         let message = Message(message: ["key": "This is a ping from iOS client"])
         let topic = "device:1234"
         let event = "new_msg"

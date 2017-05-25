@@ -16,6 +16,7 @@
 		54D1815A1EBAF25100330767 /* BadgerClientUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D181591EBAF25100330767 /* BadgerClientUITests.swift */; };
 		54D1816A1EBAF39200330767 /* SocketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D181681EBAF39200330767 /* SocketViewController.swift */; };
 		54D1816B1EBAF39200330767 /* SocketViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54D181691EBAF39200330767 /* SocketViewController.xib */; };
+		671958C71ED75073008B4A81 /* NetworkingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671958C61ED75073008B4A81 /* NetworkingViewController.swift */; };
 		F3D1E54F1A78B7BF1A51CE34 /* Pods_BadgerClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B396665D31C0EF8C4BCF5504 /* Pods_BadgerClient.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,7 @@
 		54D1815B1EBAF25100330767 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		54D181681EBAF39200330767 /* SocketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketViewController.swift; path = SocketViewController/SocketViewController.swift; sourceTree = "<group>"; };
 		54D181691EBAF39200330767 /* SocketViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocketViewController.xib; path = SocketViewController/SocketViewController.xib; sourceTree = "<group>"; };
+		671958C61ED75073008B4A81 /* NetworkingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkingViewController.swift; path = SocketViewController/NetworkingViewController.swift; sourceTree = "<group>"; };
 		B396665D31C0EF8C4BCF5504 /* Pods_BadgerClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BadgerClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C36CEE0E7E5A46F40B47204A /* Pods-BadgerClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BadgerClient.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BadgerClient/Pods-BadgerClient.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -140,6 +142,7 @@
 		54D181671EBAF37A00330767 /* SocketViewController */ = {
 			isa = PBXGroup;
 			children = (
+				671958C61ED75073008B4A81 /* NetworkingViewController.swift */,
 				54D181681EBAF39200330767 /* SocketViewController.swift */,
 				54D181691EBAF39200330767 /* SocketViewController.xib */,
 			);
@@ -324,7 +327,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		FA6DA97E4C72BBF620EB263D /* [CP] Copy Pods Resources */ = {
@@ -349,6 +352,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				671958C71ED75073008B4A81 /* NetworkingViewController.swift in Sources */,
 				54D1813C1EBAF25100330767 /* ViewController.swift in Sources */,
 				54D1816A1EBAF39200330767 /* SocketViewController.swift in Sources */,
 				54D1813A1EBAF25100330767 /* AppDelegate.swift in Sources */,
