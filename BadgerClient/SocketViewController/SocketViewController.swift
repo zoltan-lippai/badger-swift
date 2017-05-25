@@ -11,30 +11,24 @@ import Networking
 
 class SocketViewController: UIViewController {
 
-    let webService = WebService(engine: Engine())
+    let webService = WebService(engine: Engine(), websocket: WebSocketConnector())
     var referenceCounter = 0
     
     @IBOutlet weak var sendButton: UIButton?
-
-    func didOpenSockets(notification: Notification) {
-        webService.register(streamReading: [JSONProcessor(type: Message.self), StreamReadProcessor(streamRead: log)])
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(didOpenSockets(notification:)), name: .WebServiceOpenedWebSocket, object: nil)
-        
-        webService.openWebSocket(to: "http://localhost", path: "/socket/websocket", port: .custom(4000))
-        joinPacket.flatMap { self.webService.dispatcher?.feed(data: $0) }
+        webService.connector?.openWebSocket(to: "http://localhost", path: "/socket/websocket", protocols: [], port: .custom(4000))
+        joinPacket.flatMap { self.webService.stream($0) }
         referenceCounter += 1
+        webService.register(streamReading: [JSONProcessor(type: Message.self), StreamReadProcessor(streamRead: log)])
+        webService.register(streamReading: [StreamReadProcessor(streamRead: { (data: Data) in
+            print(String(data: data, encoding: .utf8) ?? "nil")
+        })])
     }
 
     @IBAction func sendMessage(_ sender: UIButton) {
-        messagePacket.flatMap { self.webService.dispatcher?.feed(data: $0) }
+        messagePacket.flatMap { self.webService.stream($0) }
         referenceCounter += 1
     }
 }

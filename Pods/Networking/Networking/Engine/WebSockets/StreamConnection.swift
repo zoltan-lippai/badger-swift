@@ -46,23 +46,35 @@ public struct StreamConnection {
     public var isSecureConnection: Bool { return hostUrl.scheme == Constants.Scheme.https.rawValue || hostUrl.scheme == Constants.Scheme.wss.rawValue }
 
     /**
-     Designated initializer
+     Convenience initializer
      - parameter host: The host to connection to
+     - parameter port: The `Port` enumeration value to specify the connection's port
      - parameter input: The input stream or `nil`
      - parameter output: The output stream or `nil`
      */
     public init(host: String, port: Constants.Port = .secure, input: InputStream? = nil, output: OutputStream? = nil) {
+        self.init(host: host, port: port.port, input: input, output: output)
+    }
+    
+    /**
+     Designated initializer
+     - parameter host: The host to connection to
+     - parameter port: The port number to use for the connection
+     - parameter input: The input stream or `nil`
+     - parameter output: The output stream or `nil`
+     */
+    public init(host: String, port: Int = Constants.Port.secure.port, input: InputStream? = nil, output: OutputStream? = nil) {
         self.host = host
         inputStream = input
         outputStream = output
-        self.port = port.port
+        self.port = port
     }
 
     /**
      Closes the existing stream connections and returns a new instance with the connections released
      */
     fileprivate func closed() -> StreamConnection {
-        return StreamConnection(host: host, input: nil, output: nil)
+        return StreamConnection(host: host, port: port, input: nil, output: nil)
     }
 
     /**
@@ -90,20 +102,22 @@ public struct StreamConnection {
      Opens the streams and sets appropriate event handler delegates to each. This method should only be called after the streams have been connected and so created. Otherwise this method has no effect. This is a blocking call until the streams are open or an error is encountered during the attempt.
      - returns: The error that might have occurred during opening either of the streams.
      */
-    public mutating func openStreams() -> Error? {
+    public mutating func openStreams() throws {
         guard let inputStream = inputStream, let outputStream = outputStream else {
-            return Constants.Errors.streamsNotConnected
+            throw Constants.Errors.streamsNotConnected
         }
 
         inputHandler = InputStreamEventHandler()
-        var error = inputHandler?.open(stream: inputStream)
+        try inputHandler?.open(stream: inputStream)
         
-        if error == nil {
-            outputHandler = OutputStreamEventHandler()
-            error = outputHandler?.open(stream: outputStream)
+        outputHandler = OutputStreamEventHandler()
+        do {
+            try outputHandler?.open(stream: outputStream)
+        } catch let error {
+            inputStream.close()
+            inputHandler = nil
+            throw error
         }
-        
-        return error
     }
 
     /**

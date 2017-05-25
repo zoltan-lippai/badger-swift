@@ -1,46 +1,12 @@
 //
-//  StreamHandshakeProcessor.swift
+//  CFHTTPMessage+Convenience.swift
 //  Networking
 //
-//  Created by Zoltan Lippai on 5/23/17.
+//  Created by Zoltan Lippai on 5/25/17.
 //  Copyright © 2017 DoorDash. All rights reserved.
 //
 
 import Foundation
-
-struct StreamHandshakeProcessor: ResponseProcessing {
-    
-    var processor: StreamReadProcessor<Data>!
-    
-    let processors: [ResponseProcessing]
-    
-    let url: URL
-    
-    let webService: WebService
-    
-    init(webService: WebService, handshake url: URL, processors: [ResponseProcessing]) {
-        self.webService = webService
-        self.url = url
-        self.processors = processors
-        processor = StreamReadProcessor(queue: .serialBackground, streamRead: processResult)
-    }
-    
-    func processResult(data: Data) {
-        if let urlResponse = HTTPURLResponse(url: url, data: data) {
-            processors.map { ResponseProcessorWrapper(processor: $0) }.forAsync(iterateWith: OperationResult(with: urlResponse, data: data)) { result in
-                if let error = result.error {
-                    self.webService.didFailWebSocketHandshake(with: error)
-                } else {
-                    self.webService.didOpenWebSocketStreams()
-                }
-            }
-        }
-    }
-    
-    func process(result: Processable, completion: ((Processable) -> Void)?) {
-        processor.process(result: result, completion: completion)
-    }
-}
 
 extension CFHTTPMessage {
     
@@ -97,18 +63,5 @@ extension CFHTTPMessage {
                 CFHTTPMessageAppendBytes(self, data.bytes, data.count)
             }
         }
-    }
-}
-
-extension HTTPURLResponse {
-    /**
-     Convenience initializer for reconstructing an HTTP url response from data that was read from an input stream
-     - parameter url: The url of the response
-     - parameter data: The data read from the stream
-     */
-    convenience init?(url: URL, data: Data) {
-        let message = CFHTTPMessage.message(from: data)
-        guard let headers = message.allHeaderFields, let code = message.statusCode else { return nil }
-        self.init(url: url, statusCode: code, httpVersion: String(kCFHTTPVersion1_1), headerFields: headers)
     }
 }

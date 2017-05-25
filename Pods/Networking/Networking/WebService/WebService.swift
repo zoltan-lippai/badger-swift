@@ -16,17 +16,16 @@ open class WebService: Cancelable {
 
     /// The network engine
     open let engine: RequestProcessing & Cancelable
+    
+    /// The websocket connector
+    open let connector: (WebSocketConnecting & StreamInteraction)?
 
     /// Designated initializer, sets the engine the webserice is supposed to cooperate with
     /// - parameter engine: the network engine
-    public init(engine: RequestProcessing & Cancelable) {
+    public init(engine: RequestProcessing & Cancelable, websocket connector: (WebSocketConnecting & StreamInteraction)? = nil) {
         self.engine = engine
+        self.connector = connector
     }
-    
-    /**
-     The stream dispatcher, responsible keeping the stream connection - if any - alive, scheduling data writing to the output stream and dispatching read data from the input stream
-     */
-    open var dispatcher: (StreamDispatching & Cancelable)?
     
     deinit {
         cancel()
@@ -37,6 +36,6 @@ open class WebService: Cancelable {
      */
     open func cancel() {
         engine.cancel()
-        dispatcher?.cancel()
+        connector?.cancel()
     }
 }

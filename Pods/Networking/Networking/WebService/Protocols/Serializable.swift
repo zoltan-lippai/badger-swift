@@ -23,13 +23,6 @@ public protocol Serializable {
      Returns a JSON object from the instance. Can be either the original JSON object or a newly converted one as necessary. The default implementation returns `nil`. Provide a specific implementation if the native to JSON conversion is required.
      */
     var rawValue: Any? { get }
-
-    /**
-     Returns a collection (array) of `Self` type from the JSON response, if the JSON is an array of JSON objects of compatible type.
-     - parameter rawValue: The JSON array
-     - returns: An array of objects of the receiver's type. Any JSON object that cannot be converted to the receiver's type are omitted.
-     */
-//    static func collection(from rawValue: Any) -> [Self]?
 }
 
 extension Serializable {
@@ -38,6 +31,13 @@ extension Serializable {
         return nil
     }
 
+    /**
+     Returns a collection (array) of `Self` type from the JSON response, if the JSON is an array of JSON objects of compatible type.
+     - parameter rawValue: The JSON array
+     - returns: An array of objects of the receiver's type. Any JSON object that cannot be converted to the receiver's type are omitted.
+     
+     This method is not part of the protocol so it does not have `Self` or `associatedtype` requirements and can be used as a type without generics or further specification. It is usually not expected to override this method or provide a different a implementation.
+     */
     static public func collection(from rawValue: Any) -> [Self]? {
         return __array(from: rawValue)
     }

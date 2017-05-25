@@ -26,7 +26,7 @@ public struct StreamData: Processable {
         return StreamData(data: data, error: error, translated: translated)
     }
     
-    public func translating(to value: Any) -> StreamData {
+    public func translating(to value: Any?) -> StreamData {
         return StreamData(data: data, error: error, translated: value)
     }
     

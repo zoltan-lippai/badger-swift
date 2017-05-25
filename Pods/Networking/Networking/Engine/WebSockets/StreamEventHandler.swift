@@ -31,16 +31,18 @@ class StreamEventHandler: NSObject, StreamDelegate {
     /**
      Opens a stream. This is a blocking call until the stream is opened or an error occurs during the attempt.
      - parameter stream: The stream to open. The receiver will set itself as the stream's delegate
-     - returns: The stream error that occurred during opening it, or `nil` if opening the stream was successful
+     - throws: The stream error that occurred during opening it, or `nil` if opening the stream was successful
      */
-    func open(stream: Stream) -> Error? {
+    func open(stream: Stream) throws {
         stream.delegate = self
         stream.open()
         
         semaphore = DispatchSemaphore(value: 0)
         semaphore?.wait()
         
-        return stream.streamError
+        if let error = stream.streamError {
+            throw error
+        }
     }
 }
 

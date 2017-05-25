@@ -60,7 +60,7 @@ public struct OperationResult: ProcessableResponse, AsyncInvocable {
         return OperationResult(with: response, data: data, error: error, request: request, translated: translated, shouldDrop: shouldDrop, shouldRepeat: shouldRepeat)
     }
     
-    public func translating(to value: Any) -> OperationResult {
+    public func translating(to value: Any?) -> OperationResult {
         return OperationResult(with: response, data: data, error: error, request: request, translated: value, shouldDrop: shouldDrop, shouldRepeat: shouldRepeat)
     }
     

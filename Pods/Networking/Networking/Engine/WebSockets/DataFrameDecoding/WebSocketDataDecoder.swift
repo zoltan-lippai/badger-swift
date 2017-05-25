@@ -15,7 +15,7 @@ final class WebSocketDataDecoder {
     
     /// The stream data object constructed from the assembled payload
     public var streamData: StreamData {
-        return StreamData(data: payload)
+        return StreamData(data: payload, translated: type)
     }
     
     /// Tells whether all data fragments have been read and processed
@@ -29,6 +29,8 @@ final class WebSocketDataDecoder {
         return managedData.data
     }
     
+    private var type: WebSocketFrameType?
+    
     /**
      Appends a new data fragment read from the stream
      - parameter frame: The websocket data frame received
@@ -36,6 +38,10 @@ final class WebSocketDataDecoder {
     func append(fragment frame: WebSocketDataFrame) {
         guard (frame.type == .continuation && managedData.length > 0) ||
                (frame.type != .continuation && managedData.length == 0) else { return }
+        
+        if !isStarted {
+            type = frame.type
+        }
         
         managedData.append(contentsOf: frame.payload)
         isFinalized = frame.isFinal

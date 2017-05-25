@@ -33,7 +33,7 @@ public protocol Processable {
      - parameter value: The new value for the `translated` property of the returned instance
      - returns: A new `Processable` instance with the `translated` property set
      */
-    func translating(to value: Any) -> Self
+    func translating(to value: Any?) -> Self
 
     /**
      Creates a new instance of itself by specifying the error field
@@ -49,7 +49,7 @@ extension Processable {
         return self
     }
     
-    public func translating(to value: Any) -> Self {
+    public func translating(to value: Any?) -> Self {
         return self
     }
 }

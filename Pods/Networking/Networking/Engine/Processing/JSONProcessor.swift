@@ -39,6 +39,8 @@ public struct JSONProcessor<T>: ResponseProcessing where T: Serializable {
      */
     public func process(result: Processable, completion: ((Processable) -> Void)?) {
         if let data = result.data, let object = try? JSONSerialization.jsonObject(with: data, options: []) {
+            print(object)
+            print(serialize(json: object))
             completion?( result.translating(to: serialize(json: object) ?? object))
         } else {
             completion?(result)
