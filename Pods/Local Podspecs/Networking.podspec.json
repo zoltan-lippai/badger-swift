@@ -1,0 +1,28 @@
+{
+  "name": "Networking",
+  "version": "1.2.1",
+  "summary": "Doordash iOS network engine",
+  "description": "The doordash iOS networking engine was created with ease of use in mind to provide a\nunified interface for network connections.\nThe solution wraps the Foundation framework's URLSession and related objects to\nprovide HTTP connection.\nThe main advantage is provided through the high level interfaces where the operation\nresults can be managed and processed through a chain of processor objects to separate\ndifferent use cases, provide data transformation and deserialization, as well as manage\nvalidation.",
+  "homepage": "https://www.doordash.com",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Zoltan Lippai": "zoltan@doordash.com"
+  },
+  "source": {
+    "git": "https://github.com/doordash/doordash-ios-network.git",
+    "tag": "1.2.1"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source_files": "Networking/**/*",
+  "frameworks": "Foundation",
+  "dependencies": {
+    "CryptoSwift": [
+
+    ]
+  }
+}

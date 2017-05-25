@@ -2,68 +2,72 @@
 //  SocketViewController.swift
 //  BadgerClient
 //
-//  Created by Anderthan Hsieh on 5/3/17.
+//  Created by Zoltan Lippai on 5/25/2017.
 //  Copyright © 2017 DoorDash. All rights reserved.
 //
 
 import UIKit
-import SwiftPhoenixClient
+import Networking
 
 class SocketViewController: UIViewController {
 
-    @IBOutlet weak var topicLabel: UILabel!
-    @IBOutlet weak var bodyLabel: UILabel!
+    let webService = WebService(engine: Engine())
+    var referenceCounter = 0
     
-    @IBOutlet weak var messageButton: UIButton!
+    @IBOutlet weak var sendButton: UIButton?
+
+    func didOpenSockets(notification: Notification) {
+        webService.register(streamReading: [JSONProcessor(type: Message.self), StreamReadProcessor(streamRead: log)])
+    }
     
-    let socket = Socket(domainAndPort: "localhost:4000", path: "socket", transport: "websocket")
-    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        NotificationCenter.default.addObserver(self, selector: #selector(didOpenSockets(notification:)), name: .WebServiceOpenedWebSocket, object: nil)
         
-        self.setupSocket()
-        
-        self.messageButton.addTarget(self, action: #selector(sendMessage(with:)), for: UIControlEvents.touchUpInside)
+        webService.openWebSocket(to: "http://localhost", path: "/socket/websocket", port: .custom(4000))
+        joinPacket.flatMap { self.webService.dispatcher?.feed(data: $0) }
+        referenceCounter += 1
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func sendMessage(_ sender: UIButton) {
+        messagePacket.flatMap { self.webService.dispatcher?.feed(data: $0) }
+        referenceCounter += 1
     }
-    
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-    func sendMessage(with sender: UIButton) {
-        let message = Message(message: ["key": "This is a ping from iOS client"])
-        let topic = "device:1234"
-        let event = "new_msg"
-        let payload = Payload(topic: topic, event: event, message: message)
-        socket.send(data: payload)
-    }
-    
-    func setupSocket() {
-        socket.join(topic:"device:1234", message: Message(subject:"status", body:"joining")) { (channel: Any) in
-            let chan = channel as! Channel
-            
-            chan.on(event: "new_msg", callback: { (msg: Any) in
-                let message = msg as! Message
-                print("on")
-                print(message)
-            })
-
+extension SocketViewController {
+    func log(message: Message) {
+        switch message.event {
+        case "phx_reply" where message.payload is Reply:
+            print("reply from server: \((message.payload as! Reply).key)")
+        case "new_msg" where message.payload is Chat:
+            print("chat message: \((message.payload as! Chat).key)")
+        default:
+            print("generic message with event: \(message.event)")
         }
     }
+}
 
+extension SocketViewController {
+    var joinPacket: Data? {
+        let joinPayload: [String: Any] = ["topic": "device:1234",
+                                          "event": "phx_join",
+                                          "ref": String(referenceCounter),
+                                          "payload": ["subject": "status",
+                                                      "body": "joining"]]
+        return try? JSONSerialization.data(withJSONObject: joinPayload, options: [])
+    }
+    
+    var messagePacket: Data? {
+        let messagePacket: [String: Any] = ["topic": "device:1234",
+                                            "event": "new_msg",
+                                            "ref": String(referenceCounter),
+                                            "payload": ["key": "This is a new message from iOS client"]
+        ]
+        return try? JSONSerialization.data(withJSONObject: messagePacket, options: [])
+    }
 }
