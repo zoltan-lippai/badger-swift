@@ -14,7 +14,7 @@ import Foundation
 protocol StreamDataReassembling: class {
     
     /**
-     A array of ephemeral decoders that deal with the incoming data frames. The  
+     A array of ephemeral decoders that deal with the incoming data frames
      */
     var decoders: [WebSocketDataDecoder] { get set }
     
@@ -23,7 +23,7 @@ protocol StreamDataReassembling: class {
      - parameter data: The data read from the stream
      */
     func decode(_ data: Data)
-
+    
     /**
      Distributes the reassembled stream data
      - parameter response: The stream data reconstructed from the input stream

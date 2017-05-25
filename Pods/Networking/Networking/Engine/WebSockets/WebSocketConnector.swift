@@ -1,5 +1,5 @@
 //
-//  WebService+StreamConnection.swift
+//  WebSocketConnector.swift
 //  Networking
 //
 //  Created by Zoltan Lippai on 5/18/17.
@@ -11,12 +11,14 @@ import Foundation
 /**
  A concrete implementation of the `WebSocketConnecting` protocol
  */
-public class WebSocketConnector: WebSocketConnecting, WebSocketHandshaking, StreamInteraction {
+open class WebSocketConnector: WebSocketConnecting, WebSocketHandshaking, StreamInteraction {
     
-    public init() { }
+    public init() {
+        // for visibility purposes
+    }
     
     /// The connection
-    public var connection: StreamConnection?
+    open var connection: StreamConnection?
     
     /// The stream data dispatcher both for reading and writing
     var dispatcher = StreamDispatcher()
@@ -37,7 +39,7 @@ public class WebSocketConnector: WebSocketConnecting, WebSocketHandshaking, Stre
     }
     
     /// Invoked when the websocket connection has successfully opened. Fires a notification for interested subscribers
-    func didOpenWebSocketStreams() {
+    open func didOpenWebSocketStreams() {
         guard let connection = connection else { return }
         dispatcher.connection = connection
         
@@ -47,21 +49,21 @@ public class WebSocketConnector: WebSocketConnecting, WebSocketHandshaking, Stre
     }
     
     /// Invoked when the websocket handshake failed with error. Fires a notification for interested subscribers.
-    func didFailWebSocketHandshake(with error: Error) {
+    open func didFailWebSocketHandshake(with error: Error) {
         DispatchQueue.main.async {
             NotificationCenter.default.post(name: .WebServiceFailedWebSocketHandshake, object: self, userInfo: [Constants.FailedWebSocketHandshakeErrorKey: error])
         }
     }
     
-    public func cancel() {
+    open func cancel() {
         dispatcher.cancel()
     }
     
-    public func register(streamReading flow: [ResponseProcessing]) {
+    open func register(streamReading flow: [ResponseProcessing]) {
         dispatcher.register(dataProcessors: flow)
     }
     
-    public func stream(_ data: Data) {
+    open func stream(_ data: Data) {
         dispatcher.feed(data: data)
     }
 }

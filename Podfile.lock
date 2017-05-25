@@ -13,7 +13,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Networking:
-    :commit: 40b123d9ab5468840e35556aec47e14842ff8b5e
+    :commit: 514cbda3c4f865b069d39050a6de31ab9fc8c6c3
     :git: https://github.com/doordash/doordash-ios-network.git
 
 SPEC CHECKSUMS:

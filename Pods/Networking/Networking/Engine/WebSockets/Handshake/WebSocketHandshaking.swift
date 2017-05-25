@@ -18,9 +18,11 @@ protocol WebSocketHandshaking {
      Returns an endpoint to the provided host to initiate the handshake
      - parameter address: The host's address, including the URL, the scheme, the path, and - if provided - the port, e.g. https://somehost<:port>
      - parameter protocols: An optional list of protocols to suggest for the websocket handshake. By default the value is an empty array.
+     - parameter port: The port to use for the stream connection
      - parameter connection: A stream connection to use for the handshake
      */
     func performHandshake(to address: String, specifying protocols: [String], port: Constants.Port, completion: @escaping (Processable) -> Void) throws -> StreamConnection?
+    
     /**
      Returns the websocket protocol version to use. The default value is `"13"`
      */
