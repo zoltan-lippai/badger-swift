@@ -2,13 +2,9 @@ PODS:
   - CryptoSwift (0.6.9)
   - Networking (1.2.1):
     - CryptoSwift
-  - Starscream (2.0.4)
-  - SwiftPhoenixClient (0.6.0):
-    - Starscream (~> 2.0.0)
 
 DEPENDENCIES:
   - Networking (from `https://github.com/doordash/doordash-ios-network.git`, branch `Zoltan/websocket`)
-  - SwiftPhoenixClient
 
 EXTERNAL SOURCES:
   Networking:
@@ -23,9 +19,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   CryptoSwift: a22f6ba238e9ce4d26ee7bf45b9ed82e7122d4a0
   Networking: 66360992cc43189fccd862a5ff3ba48e74eb66f6
-  Starscream: df5974ee928b157c8eda8af8de7c620276b7dfcc
-  SwiftPhoenixClient: b50748ec36d28719eaf69c1e13ae612df6b185a0
 
-PODFILE CHECKSUM: 134da93bea2e37dd977db8995e30c0c7477623ce
+PODFILE CHECKSUM: 7f01c6551ad27b42d703380fb092fe4fe9f8da16
 
 COCOAPODS: 1.2.1

@@ -8,15 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		54D1813A1EBAF25100330767 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D181391EBAF25100330767 /* AppDelegate.swift */; };
-		54D1813C1EBAF25100330767 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D1813B1EBAF25100330767 /* ViewController.swift */; };
-		54D1813F1EBAF25100330767 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54D1813D1EBAF25100330767 /* Main.storyboard */; };
 		54D181411EBAF25100330767 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54D181401EBAF25100330767 /* Assets.xcassets */; };
 		54D181441EBAF25100330767 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54D181421EBAF25100330767 /* LaunchScreen.storyboard */; };
 		54D1814F1EBAF25100330767 /* BadgerClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D1814E1EBAF25100330767 /* BadgerClientTests.swift */; };
 		54D1815A1EBAF25100330767 /* BadgerClientUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D181591EBAF25100330767 /* BadgerClientUITests.swift */; };
-		54D1816A1EBAF39200330767 /* SocketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D181681EBAF39200330767 /* SocketViewController.swift */; };
 		54D1816B1EBAF39200330767 /* SocketViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54D181691EBAF39200330767 /* SocketViewController.xib */; };
-		671958C71ED75073008B4A81 /* NetworkingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671958C61ED75073008B4A81 /* NetworkingViewController.swift */; };
+		671958C71ED75073008B4A81 /* SocketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671958C61ED75073008B4A81 /* SocketViewController.swift */; };
+		671958C91ED76435008B4A81 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671958C81ED76435008B4A81 /* Message.swift */; };
 		F3D1E54F1A78B7BF1A51CE34 /* Pods_BadgerClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B396665D31C0EF8C4BCF5504 /* Pods_BadgerClient.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,8 +39,6 @@
 		115B5260AED6C1B4DF25A5AA /* Pods-BadgerClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BadgerClient.release.xcconfig"; path = "Pods/Target Support Files/Pods-BadgerClient/Pods-BadgerClient.release.xcconfig"; sourceTree = "<group>"; };
 		54D181361EBAF25100330767 /* BadgerClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BadgerClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54D181391EBAF25100330767 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		54D1813B1EBAF25100330767 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		54D1813E1EBAF25100330767 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		54D181401EBAF25100330767 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		54D181431EBAF25100330767 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		54D181451EBAF25100330767 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -52,9 +48,9 @@
 		54D181551EBAF25100330767 /* BadgerClientUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BadgerClientUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		54D181591EBAF25100330767 /* BadgerClientUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgerClientUITests.swift; sourceTree = "<group>"; };
 		54D1815B1EBAF25100330767 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		54D181681EBAF39200330767 /* SocketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketViewController.swift; path = SocketViewController/SocketViewController.swift; sourceTree = "<group>"; };
 		54D181691EBAF39200330767 /* SocketViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocketViewController.xib; path = SocketViewController/SocketViewController.xib; sourceTree = "<group>"; };
-		671958C61ED75073008B4A81 /* NetworkingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkingViewController.swift; path = SocketViewController/NetworkingViewController.swift; sourceTree = "<group>"; };
+		671958C61ED75073008B4A81 /* SocketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketViewController.swift; path = SocketViewController/SocketViewController.swift; sourceTree = "<group>"; };
+		671958C81ED76435008B4A81 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		B396665D31C0EF8C4BCF5504 /* Pods_BadgerClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BadgerClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C36CEE0E7E5A46F40B47204A /* Pods-BadgerClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BadgerClient.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BadgerClient/Pods-BadgerClient.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -112,8 +108,6 @@
 			children = (
 				54D181671EBAF37A00330767 /* SocketViewController */,
 				54D181391EBAF25100330767 /* AppDelegate.swift */,
-				54D1813B1EBAF25100330767 /* ViewController.swift */,
-				54D1813D1EBAF25100330767 /* Main.storyboard */,
 				54D181401EBAF25100330767 /* Assets.xcassets */,
 				54D181421EBAF25100330767 /* LaunchScreen.storyboard */,
 				54D181451EBAF25100330767 /* Info.plist */,
@@ -142,9 +136,9 @@
 		54D181671EBAF37A00330767 /* SocketViewController */ = {
 			isa = PBXGroup;
 			children = (
-				671958C61ED75073008B4A81 /* NetworkingViewController.swift */,
-				54D181681EBAF39200330767 /* SocketViewController.swift */,
+				671958C61ED75073008B4A81 /* SocketViewController.swift */,
 				54D181691EBAF39200330767 /* SocketViewController.xib */,
+				671958C81ED76435008B4A81 /* Message.swift */,
 			);
 			name = SocketViewController;
 			sourceTree = "<group>";
@@ -279,7 +273,6 @@
 				54D181441EBAF25100330767 /* LaunchScreen.storyboard in Resources */,
 				54D1816B1EBAF39200330767 /* SocketViewController.xib in Resources */,
 				54D181411EBAF25100330767 /* Assets.xcassets in Resources */,
-				54D1813F1EBAF25100330767 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,9 +345,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				671958C71ED75073008B4A81 /* NetworkingViewController.swift in Sources */,
-				54D1813C1EBAF25100330767 /* ViewController.swift in Sources */,
-				54D1816A1EBAF39200330767 /* SocketViewController.swift in Sources */,
+				671958C71ED75073008B4A81 /* SocketViewController.swift in Sources */,
+				671958C91ED76435008B4A81 /* Message.swift in Sources */,
 				54D1813A1EBAF25100330767 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -391,14 +383,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		54D1813D1EBAF25100330767 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				54D1813E1EBAF25100330767 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		54D181421EBAF25100330767 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

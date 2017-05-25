@@ -29,7 +29,7 @@ public protocol Serializable {
      - parameter rawValue: The JSON array
      - returns: An array of objects of the receiver's type. Any JSON object that cannot be converted to the receiver's type are omitted.
      */
-    static func collection(from rawValue: Any) -> [Self]?
+//    static func collection(from rawValue: Any) -> [Self]?
 }
 
 extension Serializable {
