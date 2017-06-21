@@ -9,12 +9,19 @@
 import Foundation
 import Networking
 
-struct Message: Serializable {
+struct Message: Serializable, Streamable {
     
     let ref: String?
     let topic: String
     let event: String
     let payload: Serializable?
+    
+    init(ref: String?, topic: String, event: String, payload: Serializable?) {
+        self.ref = ref
+        self.topic = topic
+        self.event = event
+        self.payload = payload
+    }
     
     init?(rawValue: Any) {
         guard let json = rawValue as? [String: Any] else { return nil }
@@ -37,6 +44,23 @@ struct Message: Serializable {
             self.payload = nil
         }
     }
+    
+    var rawValue: Any? {
+        var rawValue: [String: Any] = ["topic": topic, "event": event]
+        if let payload = payload?.rawValue as? [String: Any] {
+            rawValue = payload.reduce(rawValue) {
+                var dict = $0
+                dict[$1.key] = $1.value
+                return dict
+            }
+        }
+        
+        if let ref = ref {
+            rawValue["ref"] = ref
+        }
+        
+        return rawValue
+    }
 }
 
 struct Reply: Serializable {
@@ -52,14 +76,26 @@ struct Reply: Serializable {
         self.key = key
         self.status = status
     }
+    
+    var rawValue: Any? {
+        return ["key": key, "status": status]
+    }
 }
 
 struct Chat: Serializable {
     let key: String
     
+    init(key: String) {
+        self.key = key
+    }
+    
     init?(rawValue: Any) {
         guard let json = rawValue as? [String: Any] else { return nil }
         guard let key = json["key"] as? String else { return nil }
         self.key = key
+    }
+    
+    var rawValue: Any? {
+        return ["key": key]
     }
 }
